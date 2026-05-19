@@ -6,16 +6,21 @@
   <title>Get the App</title>
   <script>
     (function () {
-      var APP_STORE  = "https://apps.apple.com/us/app/cleanair-link/id6753218842";
+      var APP_STORE  = "https://apps.apple.com/app/id6753218842";
       var PLAY_STORE = "https://play.google.com/store/apps/details?id=com.malinasafety.cleanairlink";
       var ua = navigator.userAgent || "";
-
-      if (/android/i.test(ua)) {
+  
+      // iPadOS 13+ reports as "Macintosh" but is the only "Mac" with touch support
+      var isIPadOS = /Macintosh/.test(ua) && navigator.maxTouchPoints > 1;
+      var isIOS    = /iPhone|iPad|iPod/.test(ua) || isIPadOS;
+      var isAndroid = /android/i.test(ua);
+  
+      if (isAndroid) {
         location.replace(PLAY_STORE);
-      } else if (/iPhone|iPad|iPod/i.test(ua) && !window.MSStream) {
+      } else if (isIOS) {
         location.replace(APP_STORE);
       }
-      // else: fall through and show the landing page below
+      // else: show the fallback landing page
     })();
   </script>
   <style>
