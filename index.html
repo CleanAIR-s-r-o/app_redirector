@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get the App</title>
+  <script>
+    (function () {
+      var APP_STORE  = "https://apps.apple.com/us/app/cleanair-link/id6753218842";
+      var PLAY_STORE = "https://play.google.com/store/apps/details?id=com.malinasafety.cleanairlink";
+      var ua = navigator.userAgent || "";
+
+      if (/android/i.test(ua)) {
+        location.replace(PLAY_STORE);
+      } else if (/iPhone|iPad|iPod/i.test(ua) && !window.MSStream) {
+        location.replace(APP_STORE);
+      }
+      // else: fall through and show the landing page below
+    })();
+  </script>
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; max-width: 420px; margin: 4rem auto; padding: 0 1rem; text-align: center; }
+    a.btn { display: block; padding: 1rem; margin: 0.75rem 0; border-radius: 12px; background: #111; color: #fff; text-decoration: none; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>Get our app</h1>
+  <p>Choose your platform:</p>
+  <a class="btn" href="https://apps.apple.com/app/idXXXXXXXXX">Download on the App Store</a>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.yourcompany.yourapp">Get it on Google Play</a>
+</body>
+</html>
